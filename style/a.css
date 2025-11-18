@@ -1,0 +1,56 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-size: cover;
+      background-image: url("../slike/ab.jpg");
+      background-position: center;
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6); /* poluprovidna crna pozadina */
+      padding: 40px;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      text-decoration: underline;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      background-color: yellow;
+      color: black;
+      padding: 5px;
+      display: inline-block;
+      font-size: 24px;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .button {
+      display: block;
+      margin: 30px auto 0;
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e60000;
+      color: white;
+    }
+
