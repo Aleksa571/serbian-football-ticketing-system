@@ -1,10 +1,10 @@
-# 🎟️ Serbian Football Ticketing System
+# 🎟️ Serbian Football Ticketing System - Web Bazirani Informacioni Sistem
 
-Web aplikacija za online prodaju karata za fudbalske utakmice Mozzart Bet Super Lige Srbije.
+Web bazirani informacioni sistem za online prodaju karata za fudbalske utakmice Mozzart Bet Super Lige Srbije.
 
 ## 📋 Opis projekta
 
-Aplikacija omogućava korisnicima da pretražuju, pregledaju i kupuju karte za fudbalske utakmice. Sistem podržava različite tribine, kategorije karata i nudi funkcionalnosti za upravljanje korpom, registraciju korisnika i admin panel za upravljanje utakmicama i kartama.
+Web bazirani informacioni sistem koji omogućava korisnicima da pretražuju, pregledaju i kupuju karte za fudbalske utakmice. Sistem podržava različite tribine, kategorije karata i nudi funkcionalnosti za upravljanje korpom, registraciju korisnika i admin panel za upravljanje utakmicama i kartama. Sistem je razvijen koristeći PHP, MySQL i web tehnologije za kompletan upravljački sistem prodaje karata.
 
 ## ✨ Funkcionalnosti
 
