@@ -89,10 +89,10 @@ if ($idKorisnik) {
             <?php endif; ?>
 
             <div class="contact-form-container">
-                <form action="../functions/process_contact.php" method="POST" class="contact-form">
+                <form action="https://formspree.io/f/mjklrbep" method="POST" class="contact-form" id="contactForm" autocomplete="off">
                     <div class="form-group">
                         <label for="ime">Ime i prezime:</label>
-                        <input type="text" id="ime" name="ime" placeholder="Unesite vaše ime i prezime" required>
+                        <input type="text" id="ime" name="name" placeholder="Unesite vaše ime i prezime" required>
                     </div>
 
                     <div class="form-group">
@@ -113,12 +113,51 @@ if ($idKorisnik) {
 
                     <div class="form-group">
                         <label for="poruka">Poruka:</label>
-                        <textarea id="poruka" name="poruka" rows="6" placeholder="Unesite vašu poruku..." required></textarea>
+                        <textarea id="poruka" name="message" rows="6" placeholder="Unesite vašu poruku..." required></textarea>
                     </div>
+
+                    <input type="hidden" name="_subject" value="Nova kontakt poruka sa sajta">
+                    <input type="hidden" name="_format" value="plain">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" id="_next" value="">
+                    <!-- Honeypot polje za zaštitu od spama -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                     <button type="submit" class="submit-btn">Pošalji poruku</button>
                 </form>
             </div>
+
+            <script>
+            // Postavi URL za redirekciju nakon slanja
+            document.getElementById('contactForm').addEventListener('submit', function() {
+                const url = window.location.href.split('?')[0] + '?success=1';
+                document.getElementById('_next').value = url;
+            });
+
+            // Funkcija za resetovanje forme
+            function resetForm() {
+                const form = document.getElementById('contactForm');
+                if (form) {
+                    form.reset();
+                    if (window.location.search.includes('success=1')) {
+                        window.history.replaceState({}, '', window.location.pathname);
+                    }
+                }
+            }
+
+            // Resetuj formu ako postoji success parametar
+            if (window.location.search.includes('success=1')) {
+                resetForm();
+            }
+
+            // Resetuj formu kada se stranica učita iz cache-a (npr. nakon "go back")
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || window.location.search.includes('success=1')) {
+                    resetForm();
+                }
+            });
+            </script>
 
             <div class="social-links">
                 <h3>Ili nas kontaktirajte putem:</h3>
@@ -165,7 +204,7 @@ if ($idKorisnik) {
             <div class="footer-section">
                 <h3>Kontaktiraj nas</h3>
                 <ul>
-                    <li><a href="mailto:info@onlineticket.rs">info@onlineticket.rs</a></li>
+                    <li>info@onlineticket.rs</li>
                     <li>+381 11 123 4567</li>
                     <li>Beograd, Srbija</li>
                 </ul>

@@ -48,29 +48,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
             $uspeh = true;
             
-            // Slanje email obaveštenja
-            $to = "aleksamilosevic649@gmail.com";
-            $subject = "Nova kontakt poruka - " . ucfirst($tema);
+            // Slanje email obaveštenja preko Formspree API-ja
+            // ZAMENITE 'YOUR_FORMSPREE_FORM_ID' sa vašim stvarnim Formspree form ID-jem
+            // Možete ga dobiti na: https://formspree.io/ - kreirajte novi form i kopirajte ID
+            $formspree_url = "https://formspree.io/f/mjklrbep";
             
-            // Formatiranje email poruke
-            $message = "Dobili ste novu kontakt poruku sa sajta:\n\n";
-            $message .= "Ime i prezime: " . $ime . "\n";
-            $message .= "Email: " . $email . "\n";
-            $message .= "Tema: " . $tema . "\n";
-            $message .= "Datum: " . date('d.m.Y H:i:s') . "\n\n";
-            $message .= "Poruka:\n";
-            $message .= $poruka . "\n\n";
-            $message .= "---\n";
-            $message .= "Ova poruka je automatski generisana sa kontakt forme.";
+            // Priprema podataka za Formspree
+            $formspree_data = array(
+                'name' => $ime,
+                'email' => $email,
+                'subject' => "Nova kontakt poruka - " . ucfirst($tema),
+                'tema' => $tema,
+                'message' => $poruka,
+                '_replyto' => $email,
+                '_subject' => "Nova kontakt poruka - " . ucfirst($tema)
+            );
             
-            // Email headers
-            $headers = "From: noreply@onlineticket.rs\r\n";
-            $headers .= "Reply-To: " . filter_var($email, FILTER_SANITIZE_EMAIL) . "\r\n";
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            $headers .= "X-Mailer: PHP/" . phpversion();
+            // Slanje zahteva ka Formspree API-ju
+            $ch = curl_init($formspree_url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($formspree_data));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/x-www-form-urlencoded',
+                'Accept: application/json'
+            ));
             
-            // Slanje emaila (ne prekidaj proces ako email ne uspe)
-            @mail($to, $subject, $message, $headers);
+            $response = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            // Provera da li je zahtev uspešan (ne prekidamo proces ako email ne uspe)
+            if ($http_code !== 200) {
+                error_log("Formspree greška: HTTP " . $http_code . " - " . $response);
+            }
             
         } catch (PDOException $e) {
             $greska = "Došlo je do greške pri čuvanju poruke. Molimo pokušajte ponovo.";
