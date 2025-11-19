@@ -13,6 +13,11 @@
         max-width: none !important;
         margin: 10px auto !important;
     }
+    
+    .header-logo {
+        height: 45px;
+        max-width: 120px;
+    }
 }
 @media (max-width: 450px) {
     /* Još manje margine za najuže telefone */
@@ -20,10 +25,26 @@
         margin-left: 10px !important; 
         margin-right: 10px !important;
     }
+    
+    .header-logo {
+        height: 35px;
+        max-width: 100px;
+    }
+    
+    nav ul li {
+        padding: 8px 15px;
+        margin: 5px;
+        font-size: 1.2rem;
+    }
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Postojeci globalni reset na pocetku */
@@ -38,7 +59,8 @@ nav{
     width: 100%;
     background-color: rgb(209, 99, 99);
     display:flex;
-    justify-content: space-between; 
+    justify-content: space-between;
+    align-items: center;
     height:70px;
     position: fixed;
     top: 0;
@@ -48,6 +70,39 @@ nav{
     z-index: 1000;
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}
+
+.header-logo {
+    height: 60px;
+    width: auto;
+    max-width: 150px;
+    opacity: 0.95;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background: transparent;
+}
+
+.header-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.nav-logo a {
+    display: block;
+    line-height: 0;
+}
+
+.nav-logo a:hover {
+    text-decoration: none;
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -75,6 +130,15 @@ nav ul{
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    flex: 1;
+}
+
+nav ul.a {
+    justify-content: flex-start;
+}
+
+nav ul.b {
+    justify-content: flex-end;
 }
 nav ul li{
     padding: 10px 25px;
@@ -158,10 +222,80 @@ p{
 }
 .buy-button{
     text-decoration: none;
+    color: white;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
+
+.hero-section {
+    padding: 100px 20px 40px;
+    text-align: center;
+    background: transparent;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 
+                0 0 0 4px rgba(209, 51, 71, 0.3),
+                inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    animation: fadeInDown 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 
+                0 0 0 4px rgba(209, 51, 71, 0.5),
+                inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .div2:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 15px 30px;
+    }
+    
+    .hero-content {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 70px 10px 20px;
+    }
 }
 input[type=button]{
     border: none;

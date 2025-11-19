@@ -134,8 +134,13 @@ if ($idKorisnik) {
             <ul class="a">
                 <li><a href="index.php">Početna</a></li>
                 <li><a href="view/about.html">O nama</a></li>
-                <li><a href="view/contact.html">Kontakt</a></li>
+                <li><a href="view/contact.php">Kontakt</a></li>
             </ul>
+            <div class="nav-logo">
+                <a href="index.php">
+                    <img src="./slike/logo.png" alt="Online Ticket Logo" class="header-logo">
+                </a>
+            </div>
             <ul class="b">
                 <?php if ($idKorisnik): ?>
                     <li><a href="functions/logOut.php">LOG OUT</a></li>
@@ -160,6 +165,16 @@ if ($idKorisnik) {
             </ul>
         </nav>
     </header>
+    
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="div2">
+                <a href="#karte" class="buy-button">🎟️ Pogledaj karte! 🎟️</a>
+            </div>
+        </div>
+    </div>
+    
+    <!--
     <div class="div0">
       <div class="promo-box">
         <h3>🎁 Osvoji popust</h3>
@@ -170,10 +185,6 @@ if ($idKorisnik) {
         <p id="rezultat1"></p>
       </div>
 
-      <div class="div2">
-          <a href="#karte" class="buy-button">🎟️ Pogledaj karte! 🎟️</a>
-      </div>
-
       <div class="promo-box">
         <h3>💱 Kalkulator cene</h3>
         <p>Izračunaj cenu u dinarima (EUR ➜ RSD)</p>
@@ -182,6 +193,7 @@ if ($idKorisnik) {
         <p id="kalk"></p>
       </div>
     </div>
+    -->
     <hr>
     
     <div class="div0">
@@ -359,7 +371,7 @@ if ($idKorisnik) {
             <ul>
                 <li><a href="index.php">Početna</a></li>
                 <li><a href="view/about.html">O nama</a></li>
-                <li><a href="view/contact.html">Kontakt</a></li>
+                <li><a href="view/contact.php">Kontakt</a></li>
             </ul>
         </div>
         <div class="footer-section">
@@ -411,6 +423,7 @@ if ($idKorisnik) {
     </div>
 </footer>
   
+    <!--
     <script type="text/javascript">
         function calculate(){
         let textboxVrednost = document.getElementById('price').value;
@@ -440,6 +453,7 @@ if ($idKorisnik) {
             dugme.style.display='none';
         }
     </script>
+    -->
     <script>
         function openPopup(ime) {
           document.getElementById('popup_' + ime).style.display = 'flex';
