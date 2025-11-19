@@ -101,7 +101,7 @@ $porudzbinaTekst .= "\nUkupno: " . number_format($ukupno, 0, ',', '.') . " RSD";
         <label for="adresa">Adresa za isporuku:</label>
         <textarea id="adresa" name="adresa" rows="4" required></textarea>
 
-        <textarea name="narudzbina" style="display:none;"><?php echo htmlspecialchars($porudzbinaTekst); ?></textarea>
+        <textarea name="narudzbina" style="display:none;"><?php echo $porudzbinaTekst; ?></textarea>
 
         <input type="hidden" name="_subject" value="Nova porudžbina preko sajta">
 

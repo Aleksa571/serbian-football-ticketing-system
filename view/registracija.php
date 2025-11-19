@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </div>
 <?php if ($error){ ?>
-    <div class="error"><?php echo htmlspecialchars($error); ?></div>
+    <div class="error"><?php echo $error; ?></div>
 <?php }; ?>
 </body>
 </html>

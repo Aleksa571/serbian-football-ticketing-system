@@ -291,11 +291,11 @@ $detaljnaProdaja = $pdo->query("
             </div>
             <div class="filter-group" id="custom-dates-group" style="<?php echo (!empty($date_from) && !empty($date_to)) ? '' : 'display: none;'; ?>">
                 <label for="date_from">Od datuma:</label>
-                <input type="date" name="date_from" id="date_from" value="<?php echo htmlspecialchars($date_from); ?>">
+                <input type="date" name="date_from" id="date_from" value="<?php echo $date_from; ?>">
             </div>
             <div class="filter-group" id="custom-dates-group-to" style="<?php echo (!empty($date_from) && !empty($date_to)) ? '' : 'display: none;'; ?>">
                 <label for="date_to">Do datuma:</label>
-                <input type="date" name="date_to" id="date_to" value="<?php echo htmlspecialchars($date_to); ?>">
+                <input type="date" name="date_to" id="date_to" value="<?php echo $date_to; ?>">
             </div>
             <div class="filter-group filter-group-buttons">
                 <button type="submit" class="btn-filter">Primeni filtere</button>
@@ -406,8 +406,8 @@ $detaljnaProdaja = $pdo->query("
                         <?php foreach ($topUtakmice as $index => $utakmica): ?>
                             <tr>
                                 <td><?php echo $index + 1; ?></td>
-                                <td><strong><?php echo htmlspecialchars($utakmica['domaci_tim'] . ' vs ' . $utakmica['gostujuci_tim']); ?></strong></td>
-                                <td><?php echo htmlspecialchars($utakmica['naziv_stadiona'] ?? 'N/A'); ?></td>
+                                <td><strong><?php echo $utakmica['domaci_tim'] . ' vs ' . $utakmica['gostujuci_tim']; ?></strong></td>
+                                <td><?php echo $utakmica['naziv_stadiona'] ?? 'N/A'; ?></td>
                                 <td><?php echo date("d.m.Y H:i", strtotime($utakmica['datum_utakmice'])); ?></td>
                                 <td><?php echo number_format($utakmica['broj_prodatih']); ?></td>
                                 <td><?php echo number_format($utakmica['prihod'], 0, ',', '.'); ?> RSD</td>
@@ -476,11 +476,11 @@ $detaljnaProdaja = $pdo->query("
                     <?php if (count($detaljnaProdaja) > 0): ?>
                         <?php foreach ($detaljnaProdaja as $prodaja): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($prodaja['domaci_tim'] . ' vs ' . $prodaja['gostujuci_tim']); ?></td>
-                                <td><?php echo htmlspecialchars($prodaja['naziv_stadiona'] ?? 'N/A'); ?></td>
+                                <td><?php echo $prodaja['domaci_tim'] . ' vs ' . $prodaja['gostujuci_tim']; ?></td>
+                                <td><?php echo $prodaja['naziv_stadiona'] ?? 'N/A'; ?></td>
                                 <td><?php echo date("d.m.Y H:i", strtotime($prodaja['datum_utakmice'])); ?></td>
-                                <td><?php echo htmlspecialchars($prodaja['naziv_tribine']); ?></td>
-                                <td><?php echo htmlspecialchars($prodaja['naziv_kategorije']); ?></td>
+                                <td><?php echo $prodaja['naziv_tribine']; ?></td>
+                                <td><?php echo $prodaja['naziv_kategorije']; ?></td>
                                 <td><?php echo number_format($prodaja['cena'], 0, ',', '.'); ?> RSD</td>
                                 <td><?php echo date("d.m.Y H:i", strtotime($prodaja['datum_prodaje'])); ?></td>
                             </tr>

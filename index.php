@@ -260,7 +260,7 @@ if ($idKorisnik) {
           ];
           if (isset($errorMessages[$_GET['error']])) {
               echo '<div class="error-message" style="background: #f8d7da; color: #721c24; padding: 15px; margin: 20px; border-radius: 5px; text-align: center;">';
-              echo htmlspecialchars($errorMessages[$_GET['error']]);
+              echo $errorMessages[$_GET['error']];
               echo '</div>';
           }
       }

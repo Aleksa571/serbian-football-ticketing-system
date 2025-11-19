@@ -81,11 +81,11 @@ if ($idKorisnik) {
             ?>
 
             <?php if ($poruka): ?>
-                <div class="success-message"><?php echo htmlspecialchars($poruka); ?></div>
+                <div class="success-message"><?php echo $poruka; ?></div>
             <?php endif; ?>
 
             <?php if ($greska): ?>
-                <div class="error-message"><?php echo htmlspecialchars($greska); ?></div>
+                <div class="error-message"><?php echo $greska; ?></div>
             <?php endif; ?>
 
             <div class="contact-form-container">
