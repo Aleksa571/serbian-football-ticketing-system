@@ -1,0 +1,120 @@
+body {
+    background-image: url("../slike/anfield.jpg");
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+    padding: 40px;
+    margin: 0;
+}
+
+.form-container {
+    max-width: 900px;
+    margin: auto;
+    background-color: #c8102e;
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #ffd100;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ffd100;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #ffd100;
+    color: #c8102e;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #c8102e;
+    border: 1px solid #c8102e;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table.pregled {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+table.pregled th,
+table.pregled td {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: left;
+    color: white;
+}
+
+table.pregled th {
+    background-color: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+table.pregled tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+table.pregled input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 0;
+}
+
+table.pregled input[type="submit"] {
+    width: auto;
+    padding: 5px 10px;
+    margin: 0;
+    background-color: #ffd100;
+    color: #c8102e;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}

@@ -1,0 +1,142 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url("../slike/anfield.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    .hero-logos-left,
+    .hero-logos-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 120px;
+    }
+
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .hero-logo-center {
+      width: 100px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 2px 2px 8px #c8102e;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .hero-logos-left,
+      .hero-logos-right {
+        width: auto;
+      }
+      
+      .hero-center {
+        order: -1;
+      }
+    }
+
+    .content-area {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .content-area h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #cf3e59;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .content-area h2 {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .a {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .a li {
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .a li::before {
+      content: "\2022";
+      color: #c8102e;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      position: absolute;
+      left: 0;
+    }
+
+    .div {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #button {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #c8102e;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+
+    #button:hover {
+      background-color: #a10e21;
+      transform: translateY(-2px);
+    }

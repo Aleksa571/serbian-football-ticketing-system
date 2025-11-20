@@ -1,0 +1,48 @@
+# Minimalna verzija za testiranje
+Options -Indexes
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|conf)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+<Files "conn.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# ============================================
+# ZAŠTITA OD SQL INJEKCIJA I XSS
+# ============================================
+
+# Blokiraj određene zahteve koji mogu biti napadi
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Blokiraj pristup sa sumnjivim query stringovima
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\;|'|\"|%22).*(union|select|insert|drop|update|md5|benchmark|or|and) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ============================================
+# ZAŠTITA OD CLICKJACKING-A
+# ============================================
+
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Zaštiti slike folder - blokiraj PHP fajlove
+<FilesMatch "\.php$">
+    <If "%{REQUEST_URI} =~ m#^/PhpSqlSajt/slike/#">
+        Order Allow,Deny
+        Deny from all
+    </If>
+</FilesMatch>
