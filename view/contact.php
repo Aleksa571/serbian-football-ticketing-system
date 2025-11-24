@@ -1,7 +1,5 @@
 <?php include '../functions/session_checker.php'; ?>
 <?php
-include '../functions/conn.php';
-
 // Definiši $idKorisnik iz sesije
 $idKorisnik = $_SESSION['id_korisnika'] ?? null;
 

@@ -166,24 +166,6 @@ $prodajaPoTimovima = $pdo->query("
 ")->fetchAll(PDO::FETCH_ASSOC);
 
 // ============================================
-// IZVEŠTAJ 6: PRODAJA PO TRIBINAMA (optimizovano - grupiši po ID prvo)
-// ============================================
-$prodajaPoTribinama = $pdo->query("
-    SELECT 
-        t.naziv_tribine,
-        COUNT(*) AS broj_prodatih,
-        SUM(k.cena) AS prihod,
-        AVG(k.cena) AS prosecna_cena
-    FROM karte k
-    INNER JOIN tribine t ON k.tribina_id = t.tribina_id
-    WHERE k.status = 'prodata'
-    $dateCondition
-    GROUP BY k.tribina_id
-    ORDER BY broj_prodatih DESC
-    LIMIT 15
-")->fetchAll(PDO::FETCH_ASSOC);
-
-// ============================================
 // IZVEŠTAJ 7: PRODAJA PO KATEGORIJAMA (optimizovano - grupiši po ID prvo)
 // ============================================
 $prodajaPoKategorijama = $pdo->query("
@@ -372,12 +354,6 @@ $detaljnaProdaja = $pdo->query("
 
     <!-- Grafikoni - Četvrti red -->
     <div class="charts-section">
-        <!-- Prodaja po tribinama -->
-        <div class="chart-container">
-            <h2>Prodaja po tribinama</h2>
-            <canvas id="tribineChart"></canvas>
-        </div>
-
         <!-- Prodaja po kategorijama -->
         <div class="chart-container">
             <h2>Prodaja po kategorijama</h2>
@@ -445,10 +421,6 @@ $detaljnaProdaja = $pdo->query("
                         <tr>
                             <td>Standardna devijacija</td>
                             <td><?php echo number_format($analizaCena['standardna_devijacija'] ?? 0, 0, ',', '.'); ?> RSD</td>
-                        </tr>
-                        <tr>
-                            <td>Raspon cena</td>
-                            <td><?php echo number_format($analizaCena['max_cena'] - $analizaCena['min_cena'], 0, ',', '.'); ?> RSD</td>
                         </tr>
                     </tbody>
                 </table>
@@ -674,29 +646,6 @@ $detaljnaProdaja = $pdo->query("
                     data: timoviData.map(item => item.broj_prodatih),
                     backgroundColor: 'rgba(23, 162, 184, 0.8)',
                     borderColor: '#17a2b8',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: { y: { beginAtZero: true } },
-                plugins: { legend: { display: false } }
-            }
-        });
-
-        // Tribine - Bar Chart
-        const tribineData = <?php echo json_encode($prodajaPoTribinama); ?>;
-        const tribineCtx = document.getElementById('tribineChart').getContext('2d');
-        new Chart(tribineCtx, {
-            type: 'bar',
-            data: {
-                labels: tribineData.map(item => item.naziv_tribine),
-                datasets: [{
-                    label: 'Broj prodatih karata',
-                    data: tribineData.map(item => item.broj_prodatih),
-                    backgroundColor: 'rgba(108, 117, 125, 0.8)',
-                    borderColor: '#6c757d',
                     borderWidth: 1
                 }]
             },
