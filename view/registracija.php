@@ -12,14 +12,6 @@
 include '../functions/conn.php';
 include '../functions/session_checker.php';
 
-$error = "";
-if (isset($_GET['error'])) {
-    if ($_GET['error'] == 1) {
-        $error = "Morate popuniti sva polja.";
-    } elseif ($_GET['error'] == 4) {
-        $error = "Korisničko ime već postoji. Pokušajte ponovo.";
-    }
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['username'])) {
@@ -73,8 +65,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </form>
 </div>
-<?php if ($error){ ?>
-    <div class="error"><?php echo $error; ?></div>
-<?php }; ?>
 </body>
 </html>

@@ -90,6 +90,34 @@ PhpSqlSajt/
 5. **Pokrenite aplikaciju**
    - Otvorite `http://localhost/PhpSqlSajt` u browseru
 
+## 👥 Test Korisnici
+
+Za testiranje sistema, možete koristiti sledeće test korisnike (ili kreirati svoje):
+
+### Administrator
+- **Korisničko ime:** `admin`
+- **Lozinka:** `admin123`
+- **Uloga:** Administrator (id_uloga = 1)
+- **Pristup:** Admin panel, izveštaji, upravljanje korisnicima i utakmicama
+
+### Običan Korisnik
+- **Korisničko ime:** `korisnik`
+- **Lozinka:** `korisnik123`
+- **Uloga:** Korisnik (id_uloga = 2)
+- **Pristup:** Pretraga karata, korpa, kupovina
+
+> **Napomena:** Pre nego što se korisnik može prijaviti, administrator mora da aktivira nalog u admin panelu (postaviti `active = 1` u bazi podataka).
+
+### Kreiranje novih test korisnika
+
+1. **Registracija:** Korisnici se mogu registrovati preko forme na sajtu
+2. **Aktivacija:** Administrator mora aktivirati nalog u admin panelu
+3. **Prijava:** Nakon aktivacije, korisnik se može prijaviti
+
+### Uloge u sistemu:
+- **id_uloga = 1:** Administrator - pristup admin panelu i svim funkcionalnostima
+- **id_uloga = 2:** Običan korisnik - pristup kupovini karata i osnovnim funkcionalnostima
+
 ## 🔐 Bezbednost
 
 - Fajl `functions/conn.php` je u `.gitignore` i ne sadrži osetljive podatke u repozitorijumu

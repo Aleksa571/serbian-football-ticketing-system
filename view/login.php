@@ -10,39 +10,10 @@
 <body>
 
 <?php
-$poruka = "";
-if (isset($_GET['registracija']) && $_GET['registracija'] == 1) {
-    $poruka = "Vaš nalog je registrovan, čeka se potvrda administratora.";
-}
-$greska = "";
-if (isset($_GET['error'])) {
-    switch ($_GET['error']) {
-        case 1:
-            $greska = "Morate se prijaviti da biste pristupili.";
-            break;
-        case 2:
-            $greska = "Vaš nalog još nije aktiviran. Sačekajte potvrdu administratora.";
-            break;
-        case 3:
-            $greska = "Morate biti ulogovani da biste kupili kartu.";
-            break;
-        case 4:
-            $greska="Korisnik ne postoji.";
-            break;
-    }
-}
 ?>
 
 <div class="reg">
     <h1>Prijava</h1>
-
-    <?php if ($greska){ ?>
-        <div class="error-message"><?php echo $greska ?></div>
-    <?php }; ?>
-
-    <?php if ($poruka){?>
-        <div class="info-message"><?php echo $poruka ?></div>
-    <?php }; ?>
 
     <form action="../functions/proveriUser.php" method="post">
         <label for="username">Korisničko ime:</label>
