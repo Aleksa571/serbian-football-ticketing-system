@@ -67,6 +67,25 @@ if ($idKorisnik) {
                 <h2>Pošaljite nam poruku ili nas kontaktirajte putem društvenih mreža</h2>
             </div>
 
+            <?php
+            $poruka = "";
+            $greska = "";
+            if (isset($_GET['success']) && $_GET['success'] == '1') {
+                $poruka = "Vaša poruka je uspešno poslata! Odgovorićemo vam uskoro.";
+            }
+            if (isset($_GET['error'])) {
+                $greska = "Došlo je do greške pri slanju poruke. Molimo pokušajte ponovo.";
+            }
+            ?>
+
+            <?php if ($poruka): ?>
+                <div class="success-message"><?php echo $poruka; ?></div>
+            <?php endif; ?>
+
+            <?php if ($greska): ?>
+                <div class="error-message"><?php echo $greska; ?></div>
+            <?php endif; ?>
+
             <div class="contact-form-container">
                 <form action="https://formspree.io/f/mjklrbep" method="POST" class="contact-form" id="contactForm" autocomplete="off">
                     <div class="form-group">
