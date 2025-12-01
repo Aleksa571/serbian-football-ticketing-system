@@ -73,8 +73,7 @@ $prodajaPoMesecu = $pdo->query("
     SELECT 
         DATE_FORMAT(k.datum_prodaje, '%Y-%m') AS mesec,
         COUNT(*) AS broj_karata,
-        SUM(k.cena) AS prihod,
-        AVG(k.cena) AS prosecna_cena
+        SUM(k.cena) AS prihod
     FROM karte k
     WHERE k.status = 'prodata' 
     $dateCondition
@@ -105,8 +104,7 @@ $prodajaPoStadionima = $pdo->query("
     SELECT 
         COALESCE(s.naziv_stadiona, 'Nepoznat stadion') AS naziv_stadiona,
         COUNT(*) AS broj_prodatih,
-        SUM(k.cena) AS prihod,
-        AVG(k.cena) AS prosecna_cena
+        SUM(k.cena) AS prihod
     FROM karte k
     INNER JOIN utakmice u ON k.utakmica_id = u.utakmica_id
     LEFT JOIN stadioni s ON u.stadion_id = s.stadion_id
@@ -173,7 +171,6 @@ $prodajaPoKategorijama = $pdo->query("
         kk.naziv_kategorije,
         COUNT(*) AS broj_prodatih,
         SUM(k.cena) AS prihod,
-        AVG(k.cena) AS prosecna_cena,
         MIN(k.cena) AS min_cena,
         MAX(k.cena) AS max_cena
     FROM karte k
